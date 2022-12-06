@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoadingActivity"
-    android:background="@color/zolty">
+    android:background="@color/jasny_niebieski">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textSize="100sp"
-        android:textColor="@color/dziwnyrozowy"
+        android:textColor="@color/ciemny_niebieski"
         android:text="Witaj!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,4 +34,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.096" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

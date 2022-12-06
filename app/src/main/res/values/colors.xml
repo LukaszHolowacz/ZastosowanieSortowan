@@ -7,8 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="zolty">#FFE74C</color>
-    <color name="dziwnyrozowy">#FF5964</color>
-    <color name="lapis">#38618C</color>
-    <color name="jasnyniebieski">#35A7FF</color>
+    <color name="ciemny_niebieski">#001253</color>
+    <color name="jasny_niebieski">#3E6D9C</color>
+    <color name="pomaranczowy">#FD841F</color>
+    <color name="dziwny_czerwony">#E14D2A</color>
 </resources>
