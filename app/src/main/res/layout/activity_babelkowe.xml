@@ -4,81 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".BabelkoweActivity"
     android:background="@color/szary">
 
-
     <Button
-        android:id="@+id/bubble"
+        android:id="@+id/sortuj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sortowanie bąbelkowe"
+        android:text="Sortuj"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.408" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <Button
-        android:id="@+id/wstawianie"
+        android:id="@+id/dodaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sortowanie przez wstawianie"
+        android:text="Dodaj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <Button
+        android:id="@+id/wyczysc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wyczyść Listę"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sortowanie Bąbelkowe"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textSize="38sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.047" />
 
-    <Button
-        android:id="@+id/heapsort"
+    <EditText
+        android:id="@+id/podana_liczba"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sortowanie Heapsort"
+        android:ems="10"
+        android:hint="Podaj liczbę"
+        android:background="@null"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="#80FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
-
-    <Button
-        android:id="@+id/fast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Szybkie Sortowanie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.794"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
-
-    <Button
-        android:id="@+id/scalanie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sorotwanie przez Scalanie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintHorizontal_bias="0.583"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
+        app:layout_constraintVertical_bias="0.193"
+        android:textAlignment="center"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/autor"
-        android:layout_width="wrap_content"
+        android:id="@+id/wynik"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/autor"
+        android:text="Tu wyświetli się posortowana lista"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977"
-        android:textColor="@color/white"/>
+        app:layout_constraintVertical_bias="0.419" />
 </androidx.constraintlayout.widget.ConstraintLayout>
