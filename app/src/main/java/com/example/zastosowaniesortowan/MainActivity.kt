@@ -10,32 +10,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val przyciski = listOf<Button>(
-            findViewById(R.id.bubble),
-            findViewById(R.id.fast),
-            findViewById(R.id.scalanie),
-            findViewById(R.id.wstawianie),
-            findViewById(R.id.heapsort)
-        )
-
-        przyciski[0].setOnClickListener {
+        findViewById<Button>(R.id.bubble).setOnClickListener {
             val intent = Intent(this,BabelkoweActivity::class.java)
             startActivity(intent)
         }
-        przyciski[1].setOnClickListener {
+        findViewById<Button>(R.id.fast).setOnClickListener {
             val intent = Intent(this,SzybkieActivity::class.java)
             startActivity(intent)
         }
-        przyciski[2].setOnClickListener {
+        findViewById<Button>(R.id.scalanie).setOnClickListener {
             val intent = Intent(this,ScalanieActivity::class.java)
             startActivity(intent)
         }
-        przyciski[3].setOnClickListener {
+        findViewById<Button>(R.id.wstawianie).setOnClickListener {
             val intent = Intent(this,WstawianieActivity::class.java)
             startActivity(intent)
         }
-        przyciski[4].setOnClickListener {
-            val intent = Intent(this,BabelkoweActivity::class.java)
+        findViewById<Button>(R.id.heapsort).setOnClickListener {
+            val intent = Intent(this,HeapsortActivity::class.java)
             startActivity(intent)
         }
     }
