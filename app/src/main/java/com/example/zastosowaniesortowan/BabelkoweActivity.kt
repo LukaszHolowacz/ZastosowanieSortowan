@@ -6,6 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.base.Stopwatch
+import java.util.concurrent.TimeUnit
 import kotlin.system.measureTimeMillis
 
  class BabelkoweActivity : AppCompatActivity() {
@@ -26,7 +28,8 @@ import kotlin.system.measureTimeMillis
             }
             else{
                 lista.add(liczba.text.toString().toInt())
-                zwracanie_tekstu(sortowanie_babelkowe(lista, lista.size - 1), wynik)
+                val (posortowana, czas) = sortowanie_babelkowe(lista, lista.size - 1)
+                zwracanie_tekstu(posortowana, czas, wynik)
                 liczba.text.clear()
             }
         }
@@ -36,7 +39,8 @@ import kotlin.system.measureTimeMillis
             }
             else{
                 lista.removeLast()
-                zwracanie_tekstu(sortowanie_babelkowe(lista, lista.size - 1), wynik)
+                val (posortowana, czas) = sortowanie_babelkowe(lista, lista.size - 1)
+                zwracanie_tekstu(posortowana, czas, wynik)
             }
         }
         clear.setOnClickListener {
@@ -49,8 +53,9 @@ import kotlin.system.measureTimeMillis
             }
         }
     }
-     fun sortowanie_babelkowe(tab: MutableList<Int>, size: Int): MutableList<Int>{
+     fun sortowanie_babelkowe(tab: MutableList<Int>, size: Int): Pair<MutableList<Int>, Long> {
          var pom: Int
+         val sw: Stopwatch = Stopwatch.createStarted()
          for(i in 0..size){
              for (j in 1..size){
                  if(tab[j-1]>tab[j]){
@@ -60,9 +65,11 @@ import kotlin.system.measureTimeMillis
                  }
              }
          }
-         return tab
+         sw.stop()
+         val czas: Long = sw.elapsed(TimeUnit.MICROSECONDS)
+         return tab to czas
      }
-     fun zwracanie_tekstu(tab: MutableList<Int>, textView: TextView){
+     fun zwracanie_tekstu(tab: MutableList<Int>, czas: Long, textView: TextView){
          var tekst = ""
          for(i in 0 until tab.size){
              if(tab.size-1 == i){
@@ -72,7 +79,7 @@ import kotlin.system.measureTimeMillis
                  tekst += tab[i].toString() + ", "
              }
          }
-         tekst += "Posortowano w czasie: "
+         tekst += "Posortowano w czasie: $czas μs"
          textView.text = tekst
      }
 }
