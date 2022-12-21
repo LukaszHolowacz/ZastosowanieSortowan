@@ -27,8 +27,7 @@ class HeapsortActivity : AppCompatActivity() {
             }
             else{
                 lista.add(liczba.text.toString().toInt())
-                val (posortowana, czas) = sortowanie_heapsort(lista, lista.size - 1)
-                zwracanie_tekstu(posortowana, czas, wynik)
+                wypisywanie(wynik, lista)
                 liczba.text.clear()
             }
         }
@@ -38,8 +37,7 @@ class HeapsortActivity : AppCompatActivity() {
             }
             else{
                 lista.removeLast()
-                val (posortowana, czas) = sortowanie_heapsort(lista, lista.size - 1)
-                zwracanie_tekstu(posortowana, czas, wynik)
+                wypisywanie(wynik, lista)
             }
         }
         clear.setOnClickListener {
@@ -52,24 +50,49 @@ class HeapsortActivity : AppCompatActivity() {
             }
         }
     }
-    fun sortowanie_heapsort(tab: MutableList<Int>, size: Int): Pair<MutableList<Int>, Long> {
-        var pom: Int
-        val sw: Stopwatch = Stopwatch.createStarted()
-        for(i in 0..size){
-            for (j in 1..size){
-                if(tab[j-1]>tab[j]){
-                    pom = tab[j]
-                    tab[j] = tab[j-1]
-                    tab[j-1] = pom
-                }
-            }
+    fun heapify(tab: MutableList<Int>, size: Int, i: Int){
+        var largest: Int
+        val temp: Int
+        val l = 2*i
+        val r = (2*i)+1
+        if (l<=size && tab[l]>tab[i]) {
+            largest = l
         }
-        sw.stop()
-        val czas: Long = sw.elapsed(TimeUnit.MICROSECONDS)
-        return tab to czas
+        else {
+            largest = i
+        }
+        if (r<=size && tab[r]>tab[largest]) {
+            largest = r
+        }
+        if(largest!=i){
+            temp=tab[largest]
+            tab[largest]=tab[i]
+            tab[i]=temp
+            heapify(tab,size,largest)
+        }
     }
-    fun zwracanie_tekstu(tab: MutableList<Int>, czas: Long, textView: TextView){
+    fun nie_wiem_jak_nazwac(tab: MutableList<Int>, size: Int){
+        for(i in size/2 downTo 1 ){
+            heapify(tab,size,i)
+        }
+    }
+    fun sortowanie_heapsort(tab: MutableList<Int>, _size: Int){
+        var size = _size
+        var temp: Int
+        nie_wiem_jak_nazwac(tab, size)
+        for (i in size downTo 2){
+            temp=tab[i]
+            tab[i] = tab[1]
+            tab[i] = temp
+            size -= 1
+            heapify(tab,size,1)
+        }
+    }
+    fun wypisywanie(textView: TextView, tab: MutableList<Int>) {
         var tekst = ""
+        val sw: Stopwatch = Stopwatch.createStarted()
+        sortowanie_heapsort(tab, tab.size-1)
+        sw.stop()
         for(i in 0 until tab.size){
             if(tab.size-1 == i){
                 tekst += tab[i].toString() + "\n"
@@ -78,6 +101,7 @@ class HeapsortActivity : AppCompatActivity() {
                 tekst += tab[i].toString() + ", "
             }
         }
+        val czas: Long = sw.elapsed(TimeUnit.MICROSECONDS)
         tekst += "Posortowano w czasie: $czas μs"
         textView.text = tekst
     }
