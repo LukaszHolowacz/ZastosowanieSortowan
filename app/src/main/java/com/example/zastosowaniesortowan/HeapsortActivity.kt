@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.crashlytics.buildtools.reloc.com.google.common.base.Stopwatch
+import java.util.Collections.swap
 import java.util.concurrent.TimeUnit
 
 class HeapsortActivity : AppCompatActivity() {
@@ -50,48 +51,43 @@ class HeapsortActivity : AppCompatActivity() {
             }
         }
     }
-    fun heapify(tab: MutableList<Int>, size: Int, i: Int){
-        var largest: Int
-        val temp: Int
-        val l = 2*i
-        val r = (2*i)+1
-        if (l<=size && tab[l]>tab[i]) {
-            largest = l
-        }
-        else {
-            largest = i
-        }
-        if (r<=size && tab[r]>tab[largest]) {
-            largest = r
-        }
-        if(largest!=i){
-            temp=tab[largest]
-            tab[largest]=tab[i]
-            tab[i]=temp
-            heapify(tab,size,largest)
+
+    fun heapify(arr: MutableList<Int>, n: Int, i: Int){
+        var largest = i
+        val left = 2 * i + 1
+        val right = 2 * i + 2;
+
+        if (left < n && arr[left] > arr[largest])
+            largest = left
+
+        if (right < n && arr[right] > arr[largest])
+            largest = right
+
+        if (largest != i) {
+            val pom = arr[i]
+            arr[i] = arr[largest]
+            arr[largest] = pom
+            heapify(arr, n, largest)
         }
     }
-    fun nie_wiem_jak_nazwac(tab: MutableList<Int>, size: Int){
-        for(i in size/2 downTo 1 ){
-            heapify(tab,size,i)
+
+    fun HeapSort(arr: MutableList<Int>, n: Int) {
+        for (i in n / 2 - 1 downTo 0) {
+            heapify(arr, n, i)
+        }
+
+        for (i in n - 1 downTo 0) {
+            val pom = arr[0]
+            arr[0] = arr[i]
+            arr[i] = pom
+            heapify(arr, i, 0)
         }
     }
-    fun sortowanie_heapsort(tab: MutableList<Int>, _size: Int){
-        var size = _size
-        var temp: Int
-        nie_wiem_jak_nazwac(tab, size)
-        for (i in size downTo 2){
-            temp=tab[i]
-            tab[i] = tab[1]
-            tab[i] = temp
-            size -= 1
-            heapify(tab,size,1)
-        }
-    }
+
     fun wypisywanie(textView: TextView, tab: MutableList<Int>) {
         var tekst = ""
         val sw: Stopwatch = Stopwatch.createStarted()
-        sortowanie_heapsort(tab, tab.size-1)
+        HeapSort(tab, tab.size)
         sw.stop()
         for(i in 0 until tab.size){
             if(tab.size-1 == i){
