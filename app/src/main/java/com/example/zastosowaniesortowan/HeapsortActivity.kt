@@ -1,5 +1,6 @@
 package com.example.zastosowaniesortowan
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +21,7 @@ class HeapsortActivity : AppCompatActivity() {
         val add = findViewById<Button>(R.id.dodaj2)
         val clear = findViewById<Button>(R.id.wyczysc2)
         val wynik = findViewById<TextView>(R.id.wynik2)
+        val back = findViewById<Button>(R.id.back2)
         val lista: MutableList<Int> = mutableListOf()
 
         add.setOnClickListener {
@@ -49,6 +51,10 @@ class HeapsortActivity : AppCompatActivity() {
                 lista.clear()
                 wynik.text = getString(R.string.posortowana)
             }
+        }
+        back.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

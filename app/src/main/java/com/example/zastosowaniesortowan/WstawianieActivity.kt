@@ -1,5 +1,6 @@
 package com.example.zastosowaniesortowan
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -19,6 +20,7 @@ class WstawianieActivity : AppCompatActivity() {
         val add = findViewById<Button>(R.id.dodaj3)
         val clear = findViewById<Button>(R.id.wyczysc3)
         val wynik = findViewById<TextView>(R.id.wynik3)
+        val back = findViewById<Button>(R.id.back3)
         val lista: MutableList<Int> = mutableListOf()
 
         add.setOnClickListener {
@@ -48,6 +50,10 @@ class WstawianieActivity : AppCompatActivity() {
                 lista.clear()
                 wynik.text = getString(R.string.posortowana)
             }
+        }
+        back.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -1,5 +1,6 @@
  package com.example.zastosowaniesortowan
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -20,6 +21,7 @@ import kotlin.system.measureTimeMillis
         val add = findViewById<Button>(R.id.dodaj)
         val clear = findViewById<Button>(R.id.wyczysc)
         val wynik = findViewById<TextView>(R.id.wynik)
+        val back = findViewById<Button>(R.id.back)
         val lista: MutableList<Int> = mutableListOf()
 
         add.setOnClickListener {
@@ -51,6 +53,10 @@ import kotlin.system.measureTimeMillis
                 lista.clear()
                 wynik.text = getString(R.string.posortowana)
             }
+        }
+        back.setOnClickListener {
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
         }
     }
      fun sortowanie_babelkowe(tab: MutableList<Int>, size: Int): Pair<MutableList<Int>, Long> {
